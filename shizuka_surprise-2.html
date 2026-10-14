@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#dff4ff">
+<title>For My Shizuka 💙</title>
+<style>
+:root{--blue:#4c83d8;--pink:#f06da9;--ink:#27385f}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:22px 14px;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:radial-gradient(circle at top left,#fff 0,#e4f5ff 38%,#ffe6f1 100%);overflow-x:hidden}
+.card{width:min(100%,440px);text-align:center;padding:28px 22px 30px;border:1px solid #ffffffd9;border-radius:30px;background:#ffffffd9;box-shadow:0 18px 55px #7897c52b;backdrop-filter:blur(8px)}
+.eyebrow{font-size:.76rem;letter-spacing:.16em;font-weight:800;color:#6b87bd}
+.mascot{font-size:76px;line-height:1.25;margin:13px 0;filter:drop-shadow(0 5px 7px #9cb9db55)}
+h1{font-size:clamp(2rem,8vw,2.7rem);line-height:1.08;color:#e65e9b;margin:10px 0}
+p{line-height:1.7;margin:12px 0}
+button{border:0;border-radius:999px;padding:14px 21px;margin:8px 4px;font-weight:750;font-size:1rem;cursor:pointer;box-shadow:0 7px 16px #e76ca933}
+.primary{background:linear-gradient(100deg,#ed72ab,#f39bc2);color:white}
+.secondary{background:#e8f4ff;color:#3e68aa}
+.hidden{display:none}
+.note{font-size:.84rem;color:#7280a1;margin-top:18px}
+#letter{margin-top:20px;padding:18px 15px;border-radius:20px;background:#fff4f9;border:1px dashed #f2a3c6;animation:pop .45s ease}
+#letter h2{color:#df5c98}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.heart{position:fixed;bottom:-30px;pointer-events:none;animation:float 4s linear forwards;z-index:5}
+@keyframes float{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+footer{font-size:.78rem;color:#8b91aa;margin-top:18px}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="eyebrow">A LITTLE CORNER OF THE INTERNET ✨</div>
+  <div class="mascot" aria-label="cute blue cat and heart">🐱💙</div>
+  <h1>Hey, Shizuka! 💗</h1>
+  <p>I made something small, just to make you smile.</p>
+  <button class="primary" id="openBtn">Open your surprise 💌</button>
+  <section id="letter" class="hidden">
+    <div style="font-size:2rem">🌷💌🌷</div>
+    <h2>A little note for you</h2>
+    <p>In this big world, I’m really glad our paths crossed. You don’t have to be perfect or pretend to be someone else—being yourself is more than enough. ❤️</p>
+    <p>Every little conversation with you can make an ordinary day feel special. Here’s to more smiles, silly talks, and beautiful memories. 💙</p>
+    <p><strong>From your Doraemon (your very own nickname 😉)</strong></p>
+    <button class="secondary" id="heartBtn">Send some hearts 💕</button>
+    <p id="reply" class="hidden"><strong>Sending you a pocket full of happiness! 💙✨</strong></p>
+  </section>
+  <div class="note">Made with care, especially for you ♡</div>
+  <footer>Tip: You can personalize the names and message in this HTML file.</footer>
+</main>
+<script>
+const letter=document.getElementById('letter');
+function hearts(){
+  const icons=['💗','💙','💕','✨','🌷'];
+  for(let i=0;i<18;i++){
+    const el=document.createElement('span');
+    el.className='heart'; el.textContent=icons[i%icons.length];
+    el.style.left=(Math.random()*96)+'vw';
+    el.style.fontSize=(18+Math.random()*20)+'px';
+    el.style.animationDelay=(Math.random()*.6)+'s';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),4800);
+  }
+}
+document.getElementById('openBtn').addEventListener('click',()=>{
+  letter.classList.remove('hidden');
+  document.getElementById('openBtn').textContent='Surprise opened 💖';
+  document.getElementById('openBtn').disabled=true;
+  hearts();
+});
+document.getElementById('heartBtn').addEventListener('click',()=>{
+  document.getElementById('reply').classList.remove('hidden');
+  hearts();
+});
+</script>
+</body>
+</html>
